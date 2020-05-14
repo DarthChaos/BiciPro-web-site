@@ -1,51 +1,28 @@
-import React, { useState } from 'react';
-import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import React, { useState, useContext } from "react";
+import { Link, useLocation } from "react-router-dom";
+import clsx from "clsx";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+} from "@material-ui/core";
 
-import NavigationDrawer from '../NavigationDrawer/NavigationDrawer';
+import { ArrowBackIos as ArrowBackIosIcon } from "@material-ui/icons";
 
-const drawerWidth = 240;
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexGrow: 1,
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  hide: {
-    display: 'none',
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-}));
+import { SessionContext } from "../../Contextos/SessionContext";
+import { topBarStyles as useStyles } from "./customStyles";
+import "./TopBar.scss";
 
 export default function TopBar() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+  const { authentication, setAuthentication } = useContext(SessionContext);
+
+  let { pathname } = useLocation();
+
+  const pageName = pathname.split("/")[1];
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -53,31 +30,61 @@ export default function TopBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar 
-        position="static" 
-        className={clsx(classes.appBar, { 
+      <AppBar
+        position='static'
+        className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}>
         <Toolbar>
-          <IconButton 
-            edge="start" 
-            className={clsx(classes.menuButton, {
-              [classes.hide]: open,
-            })}
-            color="inherit" 
-            aria-label="menu" 
-            onClick={handleDrawerOpen}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title} noWrap>
-            News
+          {authentication ? null : (
+            <div>
+              {pageName === "Inicio" || pageName === "Registro" ? (
+                <IconButton
+                  component={Link}
+                  to='/'
+                  color='inherit'
+                  edge='start'
+                  aria-label='atras'>
+                  <ArrowBackIosIcon />
+                </IconButton>
+              ) : null}
+            </div>
+          )}
+          <Typography variant='h6' className={classes.title} noWrap>
+            {pageName}
           </Typography>
-          <Button color="inherit">Login</Button>
-          <Button color="inherit">Registro</Button>
+          {authentication === false ? (
+            <div>
+              {pageName !== "Inicio" && pageName !== "Registro" ? (
+                <div>
+                  <Button
+                    className={classes.buttonGroup}
+                    component={Link}
+                    to='/Inicio'>
+                    Login
+                  </Button>
+                  <Button
+                    className={classes.buttonGroup}
+                    component={Link}
+                    to='/Registro'>
+                    Registro
+                  </Button>
+                </div>
+              ) : null}
+            </div>
+          ) : (
+            <>
+              <Button
+                className={classes.buttonGroup}
+                component={Link}
+                onClick={() => setAuthentication(false)}
+                to='/Home'>
+                Log Out
+              </Button>
+            </>
+          )}
         </Toolbar>
       </AppBar>
-      <NavigationDrawer open={open} setOpen={setOpen} />
     </div>
   );
 }
