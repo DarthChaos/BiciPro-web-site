@@ -1,14 +1,11 @@
-import React from 'react';
-
-import './App.css';
-
-import TopBar from './TopBar/TopBar';
-
-import Router from './Router/Router';
+import React from "react";
+import "./App.css";
+import TopBar from "./TopBar/TopBar";
+import Router from "./Router/Router";
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <TopBar />
       <Router />
     </div>
