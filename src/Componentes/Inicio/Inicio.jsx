@@ -41,12 +41,12 @@ export default function Inicio() {
   };
 
   const handleButtonClick = () => {
-    history.push("/Home");
+    history.push("/");
     setAuthentication(true);
   };
 
   return (
-    <Container className={classes.currentBody} component='main' maxWidth='xs'>
+    <Container className={classes.paper} component='main' maxWidth='xs'>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -111,7 +111,7 @@ export default function Inicio() {
               <Link
                 className={classes.link}
                 component={RouterLink}
-                to={"/Registro"}
+                to={"/registro"}
                 variant='body2'>
                 {"Tienes una cuenta? Registrate"}
               </Link>

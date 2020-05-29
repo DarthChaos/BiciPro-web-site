@@ -5,44 +5,52 @@ import {
   TextField,
   Typography,
   StepConnector,
-  Badge,
+  Card,
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
+
+const highWhite = "rgba(256, 256, 256, 1)";
+const midWhite = "rgba(256, 256, 256, 0.54)";
+const lowWhite = "rgba(256, 256, 256, 0.34)";
+const highAquamarine = "rgba(97, 218, 251, 1)";
 
 const CustomTextField = withStyles({
   root: {
     "& label": {
-      color: "rgba(256, 256, 256, 0.54)",
+      color: midWhite,
+    },
+    "& label.Mui-disabled": {
+      color: midWhite,
     },
     "& label.Mui-focused": {
-      color: "rgba(256, 256, 256, 0.34)",
+      color: lowWhite,
     },
     "& .MuiInput-underline:after": {
-      borderBottomColor: "white",
+      borderBottomColor: highWhite,
     },
     "& .MuiInputBase-root": {
-      color: "rgba(256, 256, 256, 1)",
+      color: highWhite,
     },
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
-        borderColor: "rgba(256, 256, 256, 0.54)",
+        borderColor: midWhite,
       },
       "&:hover fieldset": {
-        borderColor: "rgba(256, 256, 256, 1)",
+        borderColor: highWhite,
       },
       "&.Mui-focused fieldset": {
-        borderColor: "rgba(256, 256, 256, 0.34)",
+        borderColor: lowWhite,
       },
     },
     "& .MuiInput-underline": {
       "&:before": {
-        borderBottomColor: "rgba(256, 256, 256, 0.54)",
+        borderBottomColor: midWhite,
       },
       "&:hover:before": {
-        borderBottomColor: "rgba(256, 256, 256, 1)",
+        borderBottomColor: highWhite,
       },
       "&:after": {
-        borderBottomColor: "rgba(256, 256, 256, 0.34)",
+        borderBottomColor: lowWhite,
       },
     },
   },
@@ -50,26 +58,35 @@ const CustomTextField = withStyles({
 
 const CustomCheckBox = withStyles({
   root: {
-    color: "rgba(256, 256, 256, 0.54)",
+    color: midWhite,
   },
   checked: {
-    color: "rgba(256, 256, 256, 1)",
+    color: highWhite,
   },
 })((props) => <Checkbox color='default' {...props} />);
 
 const CustomSubmitButton = withStyles((theme) => ({
   root: {
-    color: theme.palette.getContrastText("rgba(97, 218, 251, 1)"),
+    color: theme.palette.getContrastText(highAquamarine),
     backgroundColor: "rgba(97, 218, 251, 0.54)",
     "&:hover": {
-      backgroundColor: "rgba(97, 218, 251, 1)",
+      backgroundColor: highAquamarine,
+    },
+  },
+}))(Button);
+
+const CustomBackButton = withStyles((theme) => ({
+  root: {
+    color: highWhite,
+    "&:hover": {
+      backgroundColor: "rgba(159, 165, 167, 0.54)",
     },
   },
 }))(Button);
 
 const CustomTypographyTitle = withStyles(() => ({
   root: {
-    color: "rgba(256, 256, 256, 1)",
+    color: highWhite,
   },
 }))(Typography);
 
@@ -81,12 +98,12 @@ const QontoConnector = withStyles({
   },
   active: {
     "& $line": {
-      borderColor: "rgba(97, 218, 251, 1)",
+      borderColor: highAquamarine,
     },
   },
   completed: {
     "& $line": {
-      borderColor: "rgba(97, 218, 251, 1)",
+      borderColor: highAquamarine,
     },
   },
   line: {
@@ -96,10 +113,31 @@ const QontoConnector = withStyles({
   },
 })(StepConnector);
 
+const CustomCard = withStyles({
+  root: {
+    backgroundColor: "#282c34",
+    boxShadow: "none",
+    "& .MuiCardHeader-root": {
+      padding: "16px 16px 0px 16px",
+      display: "grid",
+      "& .MuiCardHeader-content": {
+        "& .MuiTypography-h5": {
+          color: highWhite,
+        },
+        "& .MuiTypography-colorTextSecondary": {
+          color: midWhite,
+        },
+      },
+    },
+  },
+})(Card);
+
 export {
   CustomCheckBox,
   CustomSubmitButton,
+  CustomBackButton,
   CustomTextField,
   CustomTypographyTitle,
   QontoConnector,
+  CustomCard,
 };
