@@ -36,6 +36,7 @@ const topBarStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    textTransform: "capitalize",
     // color: "black",
   },
   buttonGroup: {

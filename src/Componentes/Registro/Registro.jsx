@@ -11,13 +11,14 @@ import { Check } from "@material-ui/icons";
 import clsx from "clsx";
 
 import CredencialesBasicas from "./CredencialesBasicas";
-import DatosPersonales from "./DatosPersonales";
+import DatosPersonalesRegistro from "./DatosPersonalesRegistro";
 import TermsCond from "./TermsCond";
 import Agradecimientos from "./Agradecimientos";
 import Copyright from "../Copyright/Copyright";
 import {
   CustomTypographyTitle,
   CustomSubmitButton,
+  CustomBackButton,
   QontoConnector,
 } from "../CustomComponents/CustomComponents";
 import { principalRegistrosStyle as useStyles } from "./customStyles";
@@ -47,7 +48,7 @@ function getStepContent(step) {
     case 0:
       return <CredencialesBasicas />;
     case 1:
-      return <DatosPersonales />;
+      return <DatosPersonalesRegistro />;
     case 2:
       return <TermsCond />;
     default:
@@ -94,11 +95,11 @@ export default function Registro() {
               {getStepContent(activeStep)}
               <div className={classes.buttons}>
                 {activeStep !== 0 && (
-                  <Button
+                  <CustomBackButton
                     onClick={handleBack}
-                    className={(classes.button, classes.backButton)}>
+                    className={classes.button}>
                     Atras
-                  </Button>
+                  </CustomBackButton>
                 )}
                 <CustomSubmitButton
                   variant='contained'

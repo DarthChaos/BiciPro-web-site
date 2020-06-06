@@ -114,34 +114,6 @@ const TermsCondStyles = makeStyles((theme) => ({
   },
 }));
 
-const registroStyles = makeStyles((theme) => ({
-  selectorLabel: {
-    color: "rgba(256, 256, 256, 0.54)",
-    "&.Mui-focused": {
-      color: "rgba(256, 256, 256, 0.34)",
-    },
-    "&.Mui-disabled": {
-      color: "rgba(256, 256, 256, 0.34)",
-    },
-  },
-  selector: {
-    "&.MuiInput-underline": {
-      "&:before": {
-        borderBottomColor: "rgba(256, 256, 256, 0.54)",
-      },
-      "&:hover:before": {
-        borderBottomColor: "rgba(256, 256, 256, 1)",
-      },
-      "&:after": {
-        borderBottomColor: "rgba(256, 256, 256, 0.34)",
-      },
-    },
-    "& .MuiSelect-icon": {
-      color: "rgba(256, 256, 256, 0.54)",
-    },
-  },
-}));
-
 const principalRegistrosStyle = makeStyles((theme) => ({
   root: {
     color: "rgba(234, 234, 240, 1)",
@@ -200,11 +172,6 @@ const principalRegistrosStyle = makeStyles((theme) => ({
     marginTop: theme.spacing(3),
     marginLeft: theme.spacing(1),
   },
-  backButton: {
-    marginTop: theme.spacing(3),
-    marginLeft: theme.spacing(1),
-    color: "rgba(256, 256, 256, 1)",
-  },
 }));
 
-export { registroStyles, principalRegistrosStyle, TermsCondStyles };
+export { principalRegistrosStyle, TermsCondStyles };
