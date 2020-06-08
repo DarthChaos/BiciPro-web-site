@@ -10,7 +10,7 @@ import DirectionsBikeIcon from "@material-ui/icons/DirectionsBike";
 import Inicio from "../Componentes/Inicio/Inicio";
 import Registro from "../Componentes/Registro/Registro";
 import Bicicletas from "../Componentes/Bicicletas/Bicicletas";
-import About from "../Componentes/Home/About";
+import Acerca from "../Componentes/Home/Acerca";
 import Mision from "../Componentes/Home/Mision";
 import Vision from "../Componentes/Home/Vision";
 
@@ -18,7 +18,7 @@ import Vision from "../Componentes/Home/Vision";
 export const Routes = {
   Home: { route: <Redirect to='/' />, icon: <HomeIcon /> },
   Inicio: { route: <Inicio />, icon: <LockOpenIcon /> },
-  About: { route: <About />, icon: <LockOpenIcon /> },
+  Acerca: { route: <Acerca />, icon: <LockOpenIcon /> },
   Mision: { route: <Mision />, icon: <LockOpenIcon /> },
   Vision: { route: <Vision />, icon: <LockOpenIcon /> },
   Registro: { route: <Registro />, icon: <PersonAddIcon /> },
