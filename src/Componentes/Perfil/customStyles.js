@@ -52,8 +52,6 @@ const perfilStyles = makeStyles((theme) => ({
   modalActions: {
     display: "flex",
     justifyContent: "flex-end",
-    // height: "10%",
-    // width: "100%",
   },
 }));
 

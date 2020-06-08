@@ -38,7 +38,7 @@ const protectedStyles = makeStyles((theme) => ({
     height: "50vh",
     "&:hover, &$focusTopButtonVisible": {
       zIndex: 1,
-      padding: "1vh 16px 48vh 16px",
+      padding: "1vh 16px 46vh 16px",
       "& $decorationTopButton": {
         height: "90%",
       },
