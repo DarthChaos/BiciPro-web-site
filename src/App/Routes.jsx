@@ -1,26 +1,55 @@
 import React from "react";
 
-import { Redirect } from "react-router-dom";
+import {
+  Home as HomeIcon,
+  LockOpen as LockOpenIcon,
+  PersonAdd as PersonAddIcon,
+  DirectionsBike as DirectionsBikeIcon,
+  Map as MapIcon,
+  Call as CallIcon,
+  LibraryBooks as LibraryBooksIcon,
+  Pageview as PageviewIcon,
+  Person as PersonIcon,
+} from "@material-ui/icons";
 
-import HomeIcon from "@material-ui/icons/Home";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
-import PersonAddIcon from "@material-ui/icons/PersonAdd";
-import DirectionsBikeIcon from "@material-ui/icons/DirectionsBike";
-
+import Home from "../Componentes/Home/Home";
 import Inicio from "../Componentes/Inicio/Inicio";
 import Registro from "../Componentes/Registro/Registro";
 import Bicicletas from "../Componentes/Bicicletas/Bicicletas";
-import Acerca from "../Componentes/Home/Acerca";
-import Mision from "../Componentes/Home/Mision";
-import Vision from "../Componentes/Home/Vision";
+import PerfilBicicleta from "../Componentes/PerfilBicicleta/PerfilBicicleta";
+import Maps from "../Componentes/Maps/Maps";
+import Perfil from "../Componentes/Perfil/Perfil";
 
 // Routes without authorization
-export const Routes = {
-  Home: { route: <Redirect to='/' />, icon: <HomeIcon /> },
-  Inicio: { route: <Inicio />, icon: <LockOpenIcon /> },
-  Acerca: { route: <Acerca />, icon: <LockOpenIcon /> },
-  Mision: { route: <Mision />, icon: <LockOpenIcon /> },
-  Vision: { route: <Vision />, icon: <LockOpenIcon /> },
-  Registro: { route: <Registro />, icon: <PersonAddIcon /> },
-  Bicicletas: { route: <Bicicletas />, icon: <DirectionsBikeIcon /> },
+export const NonProtectedRoutes = {
+  Home: { path: "/", children: <Home />, icon: <HomeIcon /> },
+  Inicio: { path: "/inicio", children: <Inicio />, icon: <LockOpenIcon /> },
+  Registro: {
+    path: "/registro",
+    children: <Registro />,
+    icon: <PersonAddIcon />,
+  },
+};
+
+export const ProtectedRoutes = {
+  Home: { path: "/", children: <Home />, icon: <HomeIcon /> },
+  "Perfil Seleccionado": {
+    path: "/bicicletas/:id",
+    children: <PerfilBicicleta />,
+    icon: <DirectionsBikeIcon />,
+  },
+  Bicicletas: {
+    path: "/bicicletas",
+    children: <Bicicletas />,
+    icon: <DirectionsBikeIcon />,
+  },
+  GPS: {
+    path: "/gps",
+    children: <Maps />,
+    icon: <MapIcon />,
+  },
+  Emergencias: { path: "/emergencia", icon: <CallIcon /> },
+  Blog: { path: "/blog", icon: <LibraryBooksIcon /> },
+  Contenidos: { path: "/contenidos", icon: <PageviewIcon /> },
+  Perfil: { path: "/perfil", children: <Perfil />, icon: <PersonIcon /> },
 };

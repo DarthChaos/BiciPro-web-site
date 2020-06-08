@@ -10,7 +10,7 @@ const Agradecimientos = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      history.push("/home");
+      history.push("/");
       setAuthentication(true);
     }, 2000);
   }, []);

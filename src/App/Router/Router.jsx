@@ -1,22 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Switch, Route } from "react-router-dom";
 
-import Home from "../../Componentes/Home/Home";
 import NotFound from "../../Componentes/PantallasError/404";
-import PerfilBicicleta from "../../Componentes/PerfilBicicleta/PerfilBicicleta";
 
-import { Routes } from "../Routes";
+import { NonProtectedRoutes, ProtectedRoutes } from "../Routes";
+import { SessionContext } from "../../Contextos/SessionContext";
 
 export default function Router() {
+  const { authentication } = useContext(SessionContext);
+
+  const renderRoutes = (routes) =>
+    Object.keys(routes).map((text, idx) => {
+      return (
+        <Route
+          key={idx}
+          exact
+          path={routes[text].path}
+          children={routes[text].children}
+        />
+      );
+    });
+
   return (
     <Switch>
-      <Route exact path='/' children={<Home />} />
-      <Route path='/Bicicletas/:id' children={<PerfilBicicleta />} />
-      {Object.keys(Routes).map((text, idx) => {
-        return (
-          <Route key={idx} path={`/${text}`} children={Routes[text].route} />
-        );
-      })}
+      {authentication === false
+        ? renderRoutes(NonProtectedRoutes)
+        : renderRoutes(ProtectedRoutes)}
       <Route path='*' children={<NotFound />} />
     </Switch>
   );

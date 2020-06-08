@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import clsx from "clsx";
 import {
   AppBar,
@@ -21,6 +21,7 @@ export default function TopBar() {
   const { authentication, setAuthentication } = useContext(SessionContext);
 
   let { pathname } = useLocation();
+  const { goBack } = useHistory();
 
   const pageName = pathname.split("/")[1];
 
@@ -36,37 +37,32 @@ export default function TopBar() {
           [classes.appBarShift]: open,
         })}>
         <Toolbar>
-          {authentication ? null : (
-            <div>
-              {pageName === "Inicio" || pageName === "Registro" ? (
-                <IconButton
-                  component={Link}
-                  to='/'
-                  color='inherit'
-                  edge='start'
-                  aria-label='atras'>
-                  <ArrowBackIosIcon />
-                </IconButton>
-              ) : null}
-            </div>
-          )}
+          {pageName.length !== 0 ? (
+            <IconButton
+              onClick={() => goBack()}
+              color='inherit'
+              edge='start'
+              aria-label='atras'>
+              <ArrowBackIosIcon />
+            </IconButton>
+          ) : null}
           <Typography variant='h6' className={classes.title} noWrap>
             {pageName}
           </Typography>
           {authentication === false ? (
             <div>
-              {pageName !== "Inicio" && pageName !== "Registro" ? (
+              {pageName.length === 0 ? (
                 <div>
                   <Button
                     className={classes.buttonGroup}
                     component={Link}
-                    to='/Inicio'>
+                    to='/inicio'>
                     Login
                   </Button>
                   <Button
                     className={classes.buttonGroup}
                     component={Link}
-                    to='/Registro'>
+                    to='/registro'>
                     Registro
                   </Button>
                 </div>
@@ -78,7 +74,7 @@ export default function TopBar() {
                 className={classes.buttonGroup}
                 component={Link}
                 onClick={() => setAuthentication(false)}
-                to='/Home'>
+                to='/'>
                 Log Out
               </Button>
             </>
