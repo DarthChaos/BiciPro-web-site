@@ -3,11 +3,14 @@ import withAutoplay from "react-awesome-slider/dist/autoplay";
 import AwesomeSlider from "react-awesome-slider";
 
 import Mision from "./Mision";
+import Vision from "./Vision";
 
 import logo from "../../logo.svg";
 
 import "./Home.scss";
 import "react-awesome-slider/dist/styles.css";
+import Acerca from "./Acerca";
+import CapturaPh from "./Principal";
 
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 
@@ -19,25 +22,20 @@ const NonProtected = () => {
         fillParent
         play={true}
         cancelOnInteraction={false}
-        interval={2000}>
-        <div className='Slides Slide-1'>
-          <img src={logo} className='App-logo' alt='logo' />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className='App-link'
-            href='https://reactjs.org'
-            target='_blank'
-            rel='noopener noreferrer'>
-            Learn React
-          </a>
+        interval={100000}>
+        <div className='Slides Slide-1'><CapturaPh/>
+          
+                     
+          
+          
         </div>
-        <div className='Slides Slide-2'>
+        <div>
           <Mision />
         </div>
-        <div className='Slides Slide-3'>2</div>
-        <div className='Slides Slide-4'>3</div>
+        
+        <div className='Slides Slide-3'><Vision /></div>
+        <div className='Slides Slide-4'><Acerca/></div>
+        
       </AutoplaySlider>
     </>
   );
