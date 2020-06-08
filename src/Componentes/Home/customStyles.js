@@ -2,7 +2,6 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const topButtons = {
   GPS: { color: "#324e5c" },
-  "Panico!": { color: "#45b29f" },
   Emergencias: { color: "#79bae0" },
   Blog: { color: "#6f61c2" },
   Contenidos: { color: "#5283c6" },

@@ -17,7 +17,7 @@ const Protected = () => {
           {Object.keys(topButtons).map((key) => {
             if (!["Perfil", "Bicicletas"].includes(key)) {
               return (
-                <Grid key={key} item xs={6} sm={6} md={4} lg={2} xl={2}>
+                <Grid key={key} item xs={6} sm={6} md={3} lg={2} xl={2}>
                   <ButtonBase
                     className={clsx(classes.topButton, classes.button)}
                     focusVisibleClassName={classes.focusTopButtonVisible}

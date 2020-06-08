@@ -49,10 +49,6 @@ export const ProtectedRoutes = {
     children: <Maps />,
     icon: <MapIcon />,
   },
-  "Panico!": {
-    path: "/panico",
-    icon: <NotificationImportantIcon />,
-  },
   Emergencias: { path: "/emergencia", icon: <CallIcon /> },
   Blog: { path: "/blog", icon: <LibraryBooksIcon /> },
   Contenidos: { path: "/contenidos", icon: <PageviewIcon /> },
