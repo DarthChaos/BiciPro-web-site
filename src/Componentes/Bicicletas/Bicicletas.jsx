@@ -20,7 +20,7 @@ import { bicicletasStyles as useStyles } from "./customStyles";
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export default function Album() {
+export default function Bicicletas() {
   const [modalSignIn, setModalSignIn] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -59,6 +59,7 @@ export default function Album() {
               </Grid>
             </Grid>
           </div>
+          {/* <AgregarBicicletas open={open} setOpen={setOpen} /> */}
         </Container>
       </div>
       <Container className={classes.cardGrid} maxWidth='md'>
@@ -93,7 +94,6 @@ export default function Album() {
           ))}
         </Grid>
       </Container>
-      <AgregarBicicletas />
     </>
   );
 }
