@@ -2,7 +2,6 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const topButtons = {
   GPS: { color: "#324e5c" },
-  "Panico!": { color: "#45b29f" },
   Emergencias: { color: "#79bae0" },
   Blog: { color: "#6f61c2" },
   Contenidos: { color: "#5283c6" },
@@ -38,7 +37,7 @@ const protectedStyles = makeStyles((theme) => ({
     height: "50vh",
     "&:hover, &$focusTopButtonVisible": {
       zIndex: 1,
-      padding: "1vh 16px 48vh 16px",
+      padding: "1vh 16px 46vh 16px",
       "& $decorationTopButton": {
         height: "90%",
       },
