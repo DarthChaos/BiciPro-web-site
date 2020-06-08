@@ -6,7 +6,6 @@ import {
   PersonAdd as PersonAddIcon,
   DirectionsBike as DirectionsBikeIcon,
   Map as MapIcon,
-  NotificationImportant as NotificationImportantIcon,
   Call as CallIcon,
   LibraryBooks as LibraryBooksIcon,
   Pageview as PageviewIcon,
